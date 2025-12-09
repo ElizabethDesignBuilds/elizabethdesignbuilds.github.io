@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎄 MERRY CHRISTMAS 🎄 Welcome to the TACKIEST Site on the Internet!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Fredoka+One&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(180deg, #1a472a 0%, #2d5a3f 50%, #1a472a 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: 'Mountains of Christmas', cursive;
+            cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><text y="28" font-size="28">🎅</text></svg>'), auto;
+        }
+        
+        /* Falling Snow */
+        .snowflakes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        
+        .snowflake {
+            position: absolute;
+            top: -20px;
+            color: white;
+            font-size: 1.5em;
+            animation: fall linear infinite;
+            text-shadow: 0 0 5px white;
+        }
+        
+        @keyframes fall {
+            0% {
+                transform: translateY(-20px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0.3;
+            }
+        }
+        
+        /* Blinking Christmas Lights Border */
+        .lights-border {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 999;
+        }
+        
+        .light-string {
+            position: absolute;
+            display: flex;
+        }
+        
+        .light-string.top {
+            top: 5px;
+            left: 0;
+            right: 0;
+            justify-content: space-around;
+        }
+        
+        .light-string.bottom {
+            bottom: 5px;
+            left: 0;
+            right: 0;
+            justify-content: space-around;
+        }
+        
+        .light-string.left {
+            left: 5px;
+            top: 0;
+            bottom: 0;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        
+        .light-string.right {
+            right: 5px;
+            top: 0;
+            bottom: 0;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        
+        .bulb {
+            width: 15px;
+            height: 20px;
+            border-radius: 50% 50% 50% 50%;
+            animation: blink 0.5s ease-in-out infinite alternate;
+        }
+        
+        .bulb.red { background: #ff0000; box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000; }
+        .bulb.green { background: #00ff00; box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; animation-delay: 0.1s; }
+        .bulb.blue { background: #0066ff; box-shadow: 0 0 10px #0066ff, 0 0 20px #0066ff; animation-delay: 0.2s; }
+        .bulb.yellow { background: #ffff00; box-shadow: 0 0 10px #ffff00, 0 0 20px #ffff00; animation-delay: 0.3s; }
+        .bulb.pink { background: #ff69b4; box-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4; animation-delay: 0.4s; }
+        
+        @keyframes blink {
+            0% { opacity: 0.4; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1.1); }
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Giant Spinning Title */
+        .title-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 4em;
+            color: #ff0000;
+            text-shadow: 
+                3px 3px 0 #00ff00,
+                6px 6px 0 #ffffff,
+                0 0 20px #ff0000,
+                0 0 40px #ff0000;
+            animation: rainbow 2s linear infinite, wobble 0.5s ease-in-out infinite;
+            display: inline-block;
+        }
+        
+        @keyframes rainbow {
+            0% { color: #ff0000; }
+            25% { color: #00ff00; }
+            50% { color: #ff0000; }
+            75% { color: #ffffff; }
+            100% { color: #ff0000; }
+        }
+        
+        @keyframes wobble {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+        
+        .subtitle {
+            font-size: 2em;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px #000;
+            animation: pulse 1s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        /* Marquee Banner */
+        .marquee-container {
+            background: linear-gradient(90deg, #ff0000, #00ff00, #ff0000);
+            padding: 10px 0;
+            margin: 20px 0;
+            border: 5px dashed #ffd700;
+            overflow: hidden;
+        }
+        
+        .marquee {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 15s linear infinite;
+            font-size: 1.5em;
+            color: white;
+            text-shadow: 2px 2px #000;
+        }
+        
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        /* Spinning Decorations */
+        .decorations {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        
+        .decoration {
+            font-size: 4em;
+            animation: spin 3s linear infinite;
+            display: inline-block;
+        }
+        
+        .decoration:nth-child(even) {
+            animation-direction: reverse;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.3); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+        
+        /* Bouncing Elements */
+        .bouncing {
+            animation: bounce 0.6s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* Christmas Tree */
+        .tree-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .ascii-tree {
+            font-family: monospace;
+            font-size: 1.2em;
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00;
+            white-space: pre;
+            display: inline-block;
+            animation: glow 1s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px #00ff00; }
+            100% { text-shadow: 0 0 30px #00ff00, 0 0 50px #ffff00; }
+        }
+        
+        /* Gift Boxes */
+        .gifts {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        
+        .gift {
+            font-size: 5em;
+            animation: shake 0.5s ease-in-out infinite;
+        }
+        
+        .gift:nth-child(2) { animation-delay: 0.1s; }
+        .gift:nth-child(3) { animation-delay: 0.2s; }
+        .gift:nth-child(4) { animation-delay: 0.3s; }
+        .gift:nth-child(5) { animation-delay: 0.4s; }
+        
+        @keyframes shake {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+        
+        /* Message Box */
+        .message-box {
+            background: linear-gradient(45deg, #ff0000, #008000);
+            border: 10px solid #ffd700;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 600px;
+            text-align: center;
+            animation: borderBlink 0.5s linear infinite;
+            box-shadow: 0 0 30px #ffd700;
+        }
+        
+        @keyframes borderBlink {
+            0%, 100% { border-color: #ffd700; }
+            50% { border-color: #ff0000; }
+        }
+        
+        .message-box p {
+            font-size: 1.5em;
+            color: white;
+            text-shadow: 2px 2px 4px #000;
+            margin: 10px 0;
+        }
+        
+        /* Counter */
+        .counter-section {
+            text-align: center;
+            margin: 40px 0;
+            padding: 20px;
+            background: rgba(255,0,0,0.3);
+            border-radius: 15px;
+        }
+        
+        .counter-title {
+            font-size: 2em;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+        
+        .counter {
+            font-size: 3em;
+            color: white;
+            font-family: 'Fredoka One', cursive;
+            text-shadow: 3px 3px #ff0000;
+        }
+        
+        /* Music Control */
+        .music-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1001;
+        }
+        
+        .music-btn {
+            font-size: 3em;
+            background: linear-gradient(45deg, #ff0000, #00ff00);
+            border: 4px solid #ffd700;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+            animation: pulse 1s ease-in-out infinite;
+            box-shadow: 0 0 20px #ffd700;
+        }
+        
+        .music-btn:hover {
+            transform: scale(1.2);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #ffd700;
+            font-size: 1.2em;
+        }
+        
+        /* Floating decorations */
+        .floating {
+            position: fixed;
+            font-size: 3em;
+            animation: float 4s ease-in-out infinite;
+            z-index: 998;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+        
+        .float-1 { top: 20%; left: 5%; animation-delay: 0s; }
+        .float-2 { top: 40%; right: 5%; animation-delay: 1s; }
+        .float-3 { top: 60%; left: 8%; animation-delay: 2s; }
+        .float-4 { top: 80%; right: 8%; animation-delay: 3s; }
+        
+        /* Visitor Counter Style */
+        .visitor-counter {
+            font-family: 'Courier New', monospace;
+            background: #000;
+            color: #0f0;
+            padding: 10px 20px;
+            border: 3px inset #808080;
+            display: inline-block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Snowflakes Container -->
+    <div class="snowflakes" id="snowflakes"></div>
+    
+    <!-- Christmas Lights Border -->
+    <div class="lights-border">
+        <div class="light-string top" id="lights-top"></div>
+        <div class="light-string bottom" id="lights-bottom"></div>
+        <div class="light-string left" id="lights-left"></div>
+        <div class="light-string right" id="lights-right"></div>
+    </div>
+    
+    <!-- Floating Decorations -->
+    <div class="floating float-1">🦌</div>
+    <div class="floating float-2">⭐</div>
+    <div class="floating float-3">🔔</div>
+    <div class="floating float-4">❄️</div>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <div class="title-container">
+            <h1>🎄 MERRY CHRISTMAS! 🎄</h1>
+            <p class="subtitle bouncing">✨ Welcome to the TACKIEST Christmas Site EVER! ✨</p>
+        </div>
+        
+        <!-- Scrolling Marquee -->
+        <div class="marquee-container">
+            <div class="marquee">
+                🎅 HO HO HO! 🎁 HAPPY HOLIDAYS! ❄️ JINGLE ALL THE WAY! 🦌 SANTA IS COMING! 🎄 DECK THE HALLS! 🔔 JOY TO THE WORLD! ⭐ SEASON'S GREETINGS! 🎅 HO HO HO! 🎁 HAPPY HOLIDAYS! ❄️
+            </div>
+        </div>
+        
+        <!-- Spinning Decorations -->
+        <div class="decorations">
+            <span class="decoration">🎄</span>
+            <span class="decoration">⭐</span>
+            <span class="decoration">🎅</span>
+            <span class="decoration">🦌</span>
+            <span class="decoration">🎁</span>
+            <span class="decoration">❄️</span>
+            <span class="decoration">🔔</span>
+            <span class="decoration">🧦</span>
+        </div>
+        
+        <!-- ASCII Christmas Tree -->
+        <div class="tree-section">
+            <pre class="ascii-tree">
+        ⭐
+        🎄
+       🎄🎄🎄
+      🎄🔴🎄🔴🎄
+     🎄🎄🔵🎄🎄🔵🎄
+    🎄🔴🎄🎄🔴🎄🎄🔴🎄
+   🎄🎄🔵🎄🎄🔵🎄🎄🔵🎄🎄
+  🎄🔴🎄🔴🎄🔴🎄🔴🎄🔴🎄🔴🎄
+        🟫🟫🟫
+      🎁🎁🎁🎁🎁
+            </pre>
+        </div>
+        
+        <!-- Gift Boxes -->
+        <div class="gifts">
+            <span class="gift">🎁</span>
+            <span class="gift">🎀</span>
+            <span class="gift">🎁</span>
+            <span class="gift">🎀</span>
+            <span class="gift">🎁</span>
+        </div>
+        
+        <!-- Message Box -->
+        <div class="message-box">
+            <p>🎅 FROM OUR FAMILY TO YOURS 🎅</p>
+            <p>May your days be MERRY and BRIGHT!</p>
+            <p>🎄🎁❄️⭐🔔🦌🧦✨</p>
+        </div>
+        
+        <!-- Countdown -->
+        <div class="counter-section">
+            <div class="counter-title">🎅 DAYS UNTIL CHRISTMAS 🎅</div>
+            <div class="counter" id="countdown"></div>
+            <div class="visitor-counter">
+                You are visitor #: <span id="visitor-count">1,337,420</span>
+            </div>
+        </div>
+        
+        <!-- More Spinning Stuff -->
+        <div class="decorations">
+            <span class="decoration">🍪</span>
+            <span class="decoration">🥛</span>
+            <span class="decoration">🎅</span>
+            <span class="decoration">🛷</span>
+            <span class="decoration">🌟</span>
+        </div>
+        
+        <footer>
+            <p>🎄 Made with ❤️ and too much eggnog 🎄</p>
+            <p>Best viewed with Netscape Navigator 4.0 😉</p>
+            <p class="bouncing">🔔 RING RING RING 🔔</p>
+        </footer>
+    </div>
+    
+    <!-- Music Control Button -->
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
+    
+    <!-- Christmas Music (royalty-free jingle bells midi-style) -->
+    <audio id="christmasMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+    
+    <script>
+        // Generate Snowflakes
+        function createSnowflakes() {
+            const container = document.getElementById('snowflakes');
+            const snowflakeChars = ['❄', '❅', '❆', '✦', '✧', '*'];
+            
+            for (let i = 0; i < 50; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                snowflake.innerHTML = snowflakeChars[Math.floor(Math.random() * snowflakeChars.length)];
+                snowflake.style.left = Math.random() * 100 + '%';
+                snowflake.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                snowflake.style.animationDelay = (Math.random() * 10) + 's';
+                snowflake.style.fontSize = (Math.random() * 1.5 + 0.5) + 'em';
+                container.appendChild(snowflake);
+            }
+        }
+        
+        // Generate Christmas Lights
+        function createLights() {
+            const colors = ['red', 'green', 'blue', 'yellow', 'pink'];
+            const positions = ['top', 'bottom', 'left', 'right'];
+            
+            positions.forEach(pos => {
+                const container = document.getElementById('lights-' + pos);
+                const count = (pos === 'top' || pos === 'bottom') ? 30 : 20;
+                
+                for (let i = 0; i < count; i++) {
+                    const bulb = document.createElement('div');
+                    bulb.className = 'bulb ' + colors[i % colors.length];
+                    bulb.style.animationDelay = (Math.random() * 0.5) + 's';
+                    container.appendChild(bulb);
+                }
+            });
+        }
+        
+        // Christmas Countdown
+        function updateCountdown() {
+            const now = new Date();
+            const christmas = new Date(now.getFullYear(), 11, 25);
+            
+            if (now > christmas) {
+                christmas.setFullYear(christmas.getFullYear() + 1);
+            }
+            
+            const diff = christmas - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('countdown').innerHTML = 
+                `🎄 ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds 🎄`;
+        }
+        
+        // Music Toggle
+        let musicPlaying = false;
+        function toggleMusic() {
+            const music = document.getElementById('christmasMusic');
+            const btn = document.getElementById('musicBtn');
+            
+            if (musicPlaying) {
+                music.pause();
+                btn.innerHTML = '🎵';
+            } else {
+                music.play();
+                btn.innerHTML = '🔇';
+            }
+            musicPlaying = !musicPlaying;
+        }
+        
+        // Fake visitor counter that slowly increases
+        function updateVisitorCount() {
+            const counter = document.getElementById('visitor-count');
+            let count = parseInt(counter.textContent.replace(/,/g, ''));
+            count += Math.floor(Math.random() * 3);
+            counter.textContent = count.toLocaleString();
+        }
+        
+        // Initialize everything
+        createSnowflakes();
+        createLights();
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        setInterval(updateVisitorCount, 5000);
+        
+        // Add some random sparkle cursors on click
+        document.addEventListener('click', function(e) {
+            const sparkle = document.createElement('div');
+            sparkle.innerHTML = '✨';
+            sparkle.style.position = 'fixed';
+            sparkle.style.left = e.clientX + 'px';
+            sparkle.style.top = e.clientY + 'px';
+            sparkle.style.fontSize = '2em';
+            sparkle.style.pointerEvents = 'none';
+            sparkle.style.zIndex = '9999';
+            sparkle.style.animation = 'spin 1s linear';
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1000);
+        });
+    </script>
+</body>
+</html>
